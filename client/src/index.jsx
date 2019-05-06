@@ -52,7 +52,7 @@ class Recommendations extends React.Component {
             return (
                 <div>
 
-                    <h1>Book Recommendations</h1>
+                    <h1>Books Worth Reading</h1>
 
                     <form onSubmit={this.handleSubmit}>
                     

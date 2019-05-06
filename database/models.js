@@ -4,7 +4,7 @@ const bookSchema = require('./index.js').bookSchema;
 
 
 let getAllBooks = function(req, res) {
-    Book.find(function (err, books) {
+    Book.find({}).sort({upvotes: -1}).exec(function (err, books) {
         if (err) {
             return console.error(err);
         } else {
