@@ -18,7 +18,7 @@ class Recommendations extends React.Component {
     }
 
     componentDidMount() {
-        console.log('component mounted');
+        console.log('component mount');
     }
 
     render() {

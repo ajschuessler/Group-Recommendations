@@ -10,7 +10,9 @@ class Book extends React.Component {
         return (
             <div>
             
-            <p>{this.props.bookInfo.title}, {this.props.bookInfo.author}</p>
+            {this.props.bookInfo.title}, {this.props.bookInfo.author}
+            <button>up</button>
+            <button>down</button>
             
             </div>
         )
