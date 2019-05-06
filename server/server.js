@@ -5,16 +5,23 @@ const cors = require('cors');
 const path = require('path');
 const port = process.env.PORT || 3000;
 const getAllBooks = require('../database/models.js').getAllBooks;
+const morgan = require('morgan');
+const addNewBookToList = require('../database/models.js').addNewBookToList;
 
 
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
 
 app.get('/books', (req, res) => {
     getAllBooks(req, res);
+});
+
+app.post('/addBook', (req, res) => {
+    addNewBookToList(req, res);
 });
 
 app.listen(port, () => {

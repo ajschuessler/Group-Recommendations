@@ -33,22 +33,52 @@ class Recommendations extends React.Component {
         })
     }
 
+    handleSubmit() {
+        Axios.post('http://localhost:3000/addBook', {
+            title: document.getElementById('title').value,
+            author: document.getElementById('author').value,
+            link: document.getElementById('link').value
+        })
+        .then(response => {
+            console.log(response);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
     render() {
         if (this.state.allBooks.length > 0) {
-            console.log('rendering on state');
+            
             return (
                 <div>
+
+                    <form onSubmit={this.handleSubmit}>
+                    
+                        <label>Title</label>
+                        <input type="text" id="title" />
+                        
+                        <label>Author</label>
+                        <input type="text" id="author" />
+
+                        <label>Link</label>
+                        <input type="text" id="link" />
+
+                        <button >Add To List</button>
+                    
+                    </form>
+
                 
-                {this.state.allBooks.map(value => {
-                    return (
-                        <Book bookInfo={value}/>
-                    )
-                })}
+                    {this.state.allBooks.map(value => {
+                        return (
+                            <Book bookInfo={value}/>
+                        )
+                    })}
                 
                 </div>
             )
         } else {
-            console.log('rendering on nothing');
+            
             return (
                 <div></div>
             )
