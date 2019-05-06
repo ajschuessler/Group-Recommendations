@@ -10,9 +10,15 @@ class Recommendations extends React.Component {
         this.state = {
             allBooks: []
         }
+
+        this.getAllBooks = this.getAllBooks.bind(this);
     }
 
     componentDidMount() {
+        this.getAllBooks();
+    }
+
+    getAllBooks() {
         Axios.get('http://localhost:3000/books')
         .then(results => {
             this.setState({
