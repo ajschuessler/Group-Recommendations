@@ -11,8 +11,8 @@ class Book extends React.Component {
             <div>
             
             {this.props.bookInfo.title}, {this.props.bookInfo.author}
-            <button>up</button>
-            <button>down</button>
+            <button>{`^`}</button>
+            12
             
             </div>
         )
