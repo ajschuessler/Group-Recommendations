@@ -32,8 +32,21 @@ let addNewBookToList = function(req, res) {
     });
 }
 
+let updateVoteCount = function(req, res) {
+    let query = {'title': req.body.title};
+    Book.findOneAndUpdate(query, {upvotes: req.body.newUpvotes}, {upsert: true}, (err, doc) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('success');
+            res.send('success');
+        }
+    })
+}
+
 
 module.exports = {
     getAllBooks: getAllBooks,
-    addNewBookToList: addNewBookToList
+    addNewBookToList: addNewBookToList,
+    updateVoteCount: updateVoteCount
 }

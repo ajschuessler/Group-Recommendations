@@ -48,10 +48,11 @@ class Recommendations extends React.Component {
     }
 
     render() {
-        if (this.state.allBooks.length > 0) {
-            
+
             return (
                 <div>
+
+                    <h1>Book Recommendations</h1>
 
                     <form onSubmit={this.handleSubmit}>
                     
@@ -71,18 +72,12 @@ class Recommendations extends React.Component {
                 
                     {this.state.allBooks.map(value => {
                         return (
-                            <Book bookInfo={value}/>
+                            <Book bookInfo={value} getAllBooks={this.getAllBooks}/>
                         )
                     })}
                 
                 </div>
             )
-        } else {
-            
-            return (
-                <div></div>
-            )
-        }
     }
 }
 
