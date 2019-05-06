@@ -18,7 +18,7 @@ let addNewBookToList = function(req, res) {
         title: req.body.title,
         author: req.body.author,
         upvotes: 0,
-        link: req.body.link
+        purchaseUrl: req.body.purchaseUrl
     });
 
     newBook.save(err => {

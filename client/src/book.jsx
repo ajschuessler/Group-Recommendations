@@ -31,21 +31,21 @@ class Book extends React.Component {
     render() {
 
         return (
-            <p className={this.props.bookInfo.title}>
+            <div className='bookListing'>
             
                 <div>{this.props.bookInfo.title}</div> 
                 
-                <div>{this.props.bookInfo.author}</div>
+                <div className='author'>by {this.props.bookInfo.author}</div>
                 
-                <a href={this.props.bookInfo.link}>Click For Link</a>
+                <a href={this.props.bookInfo.purchaseUrl}>Buy On Amazon</a>
                 
                 <div>
-                    <button id={this.props.bookInfo.title} className={this.props.bookInfo.upvotes} onClick={(e) => this.updateVoteCount(e)}>{`^`}</button>
+                    <button id={this.props.bookInfo.title} className='upvoteButton' onClick={(e) => this.updateVoteCount(e)}>👍</button>
                 </div>
                 
                 <div id={this.props.bookInfo.title + 'upvotes'}>{this.props.bookInfo.upvotes}</div>
             
-            </p>
+            </div>
         )
     }
 }

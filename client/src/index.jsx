@@ -37,7 +37,7 @@ class Recommendations extends React.Component {
         Axios.post('http://localhost:3000/addBook', {
             title: document.getElementById('title').value,
             author: document.getElementById('author').value,
-            link: document.getElementById('link').value
+            purchaseUrl: document.getElementById('purchaseUrl').value
         })
         .then(response => {
             console.log(response);
@@ -52,7 +52,7 @@ class Recommendations extends React.Component {
             return (
                 <div>
 
-                    <h1>Books Worth Reading</h1>
+                    <h1>goodbooks</h1>
 
                     <form onSubmit={this.handleSubmit}>
                     
@@ -62,8 +62,8 @@ class Recommendations extends React.Component {
                         <label>Author</label>
                         <input type="text" id="author" />
 
-                        <label>Link</label>
-                        <input type="text" id="link" />
+                        <label>purchaseUrl</label>
+                        <input type="text" id="purchaseUrl" />
 
                         <button >Add To List</button>
                     
