@@ -13,6 +13,12 @@ class Recommendations extends React.Component {
     componentDidMount() {
         console.log('component mounted');
     }
+
+    render() {
+        return (
+            <div>hello world</div>
+        )
+    }
 }
 
 
