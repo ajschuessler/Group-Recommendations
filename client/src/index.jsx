@@ -1,38 +1,52 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Book from './book.jsx';
+import Axios from 'axios';
 
 class Recommendations extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            allBooks: [
-                {title: 'Where The Crawdads Sing', author: 'Delia Owens'},
-                {title: 'East of Eden', author: 'John Steinbeck'},
-                {title: 'The Grapes of Wrath', author: 'John Steinbeck'},
-                {title: 'Walden', author: 'Henry David Thoreau'},
-            ]
-
+            allBooks: []
         }
     }
 
     componentDidMount() {
-        console.log('component mount');
+        Axios.get('http://localhost:3000/books')
+        .then(results => {
+            this.setState({
+                allBooks: results.data
+            })
+        })
+        .then(() => {
+            console.log(this.state);
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
     render() {
-        return (
-            <div>
-            
-            {this.state.allBooks.map(value => {
-                return (
-                    <Book bookInfo={value}/>
-                )
-            })}
-            
-            </div>
-        )
+        if (this.state.allBooks.length > 0) {
+            console.log('rendering on state');
+            return (
+                <div>
+                
+                {this.state.allBooks.map(value => {
+                    return (
+                        <Book bookInfo={value}/>
+                    )
+                })}
+                
+                </div>
+            )
+        } else {
+            console.log('rendering on nothing');
+            return (
+                <div></div>
+            )
+        }
     }
 }
 

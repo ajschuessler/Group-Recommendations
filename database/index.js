@@ -15,7 +15,21 @@ var bookSchema = new mongoose.Schema({
     imageUrl: String
   });
 
-var bookConstructor = mongoose.model('Book', bookSchema);
+var Book = mongoose.model('Book', bookSchema);
+
+
+
+
+module.exports = {
+    db: db,
+    bookSchema: bookSchema,
+    Book: Book
+}
+
+
+
+
+
 
 // var testEntry = new bookConstructor({
 //     title: 'testTitle',
