@@ -37,7 +37,7 @@ class Recommendations extends React.Component {
     }
 
     handleSubmit() {
-        Axios.post('http://localhost:3000/addBook', {
+        Axios.post('/addBook', {
             title: document.getElementById('title').value,
             author: document.getElementById('author').value,
             purchaseUrl: document.getElementById('purchaseUrl').value,

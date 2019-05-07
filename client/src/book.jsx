@@ -21,7 +21,7 @@ class Book extends React.Component {
 
         
 
-        Axios.put('http://localhost:3000/updateVoteCount', newCount)
+        Axios.put('/updateVoteCount', newCount)
         .then(res => {
             console.log(res);
         })
@@ -59,7 +59,7 @@ class Book extends React.Component {
 
     deleteItem(id) {
         console.log(id);
-        Axios.delete(`http://localhost:3000/deleteItem/${id}`, {data: id})
+        Axios.delete(`/deleteItem/${id}`, {data: id})
         .then(res => {
             console.log(res);
         })
