@@ -1,11 +1,11 @@
 .upvoteButton {
     border-radius: 50%;
-    background-color: green;
-    color: white;
+    background-color: white;
+    color: black;
     border: none;
     height: 35px;
     width: 35px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .author {
@@ -14,4 +14,39 @@
 
 .bookListing {
     padding: 20px;
+}
+
+.bookImage {
+    width: 100px;
+}
+
+label {
+    margin-right: 5px;
+}
+
+input {
+    margin-right: 10px;
+}
+
+#addToListButton {
+    background-color: #0066cc;
+    color: white;
+    display: inline-block;
+}
+
+#bookSelect {
+    width: 100px;
+}
+
+#movieSelect {
+    width: 100px;
+}
+
+#bookSelectContainer {
+    display: inline;
+    margin-right: 20px;
+}
+
+#movieSelectContainer {
+    display: inline;
 }

@@ -13,7 +13,7 @@ class Book extends React.Component {
         
         let newCount = {
             title: e.target.id,
-            newUpvotes: Number(document.getElementById(e.target.id + 'upvotes').textContent) + 1
+            newUpvotes: this.props.bookInfo.upvotes + 1
         }
 
         
@@ -33,6 +33,8 @@ class Book extends React.Component {
         return (
             <div className='bookListing'>
             
+                <img className='bookImage' src={this.props.bookInfo.imageUrl}></img> 
+                
                 <div>{this.props.bookInfo.title}</div> 
                 
                 <div className='author'>by {this.props.bookInfo.author}</div>
@@ -40,10 +42,8 @@ class Book extends React.Component {
                 <a href={this.props.bookInfo.purchaseUrl}>Buy On Amazon</a>
                 
                 <div>
-                    <button id={this.props.bookInfo.title} className='upvoteButton' onClick={(e) => this.updateVoteCount(e)}>👍</button>
+                    <button id={this.props.bookInfo.title} className='upvoteButton' onClick={(e) => this.updateVoteCount(e)}>👍{this.props.bookInfo.upvotes}</button>
                 </div>
-                
-                <div id={this.props.bookInfo.title + 'upvotes'}>{this.props.bookInfo.upvotes}</div>
             
             </div>
         )

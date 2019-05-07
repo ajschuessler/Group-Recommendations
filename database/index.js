@@ -13,7 +13,8 @@ var bookSchema = new mongoose.Schema({
     author: String,
     upvotes: Number,
     purchaseUrl: String,
-    imageUrl: String
+    imageUrl: String,
+    contentType: String
   });
 
 var Book = mongoose.model('Book', bookSchema);

@@ -18,7 +18,9 @@ let addNewBookToList = function(req, res) {
         title: req.body.title,
         author: req.body.author,
         upvotes: 0,
-        purchaseUrl: req.body.purchaseUrl
+        purchaseUrl: req.body.purchaseUrl,
+        imageUrl: req.body.imageUrl,
+        contentType: req.body.contentType
     });
 
     newBook.save(err => {
