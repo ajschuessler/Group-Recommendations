@@ -9,6 +9,7 @@ class Book extends React.Component {
 
         this.updateVoteCount = this.updateVoteCount.bind(this);
         this.convertEmbedTagToEmbedUrl = this.convertEmbedTagToEmbedUrl.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
     }
 
     updateVoteCount(e) {
@@ -56,16 +57,45 @@ class Book extends React.Component {
         return url.slice(startIndex, endIndex);
     }
 
+    deleteItem(id) {
+        console.log(id);
+        Axios.delete(`http://localhost:3000/deleteItem/${id}`, {data: id})
+        .then(res => {
+            console.log(res);
+        })
+        .then(() => this.props.getAllBooks())
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
     render() {
 
         if (this.props.bookInfo.contentType === 'youtubeSelect' && this.props.bookInfo.youtubeEmbedTag !== undefined) {
             return (
-                <iframe width="859" height="483" src={this.convertEmbedTagToEmbedUrl(this.props.bookInfo.youtubeEmbedTag)} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div>
+                    <button className='deleteButton' onClick={() => this.deleteItem(this.props.bookInfo._id)}>x</button>
+
+                    <iframe width="859" height="483" src={this.convertEmbedTagToEmbedUrl(this.props.bookInfo.youtubeEmbedTag)} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div>
+                        <StarRatings
+                            rating={this.props.bookInfo.rating}
+                            starRatedColor="gold"
+                            changeRating={this.changeRating}
+                            numberOfStars={10}
+                            name='rating'
+                            starDimension="20px"
+                        />
+                    </div>
+                </div>
+                
             )
 
         } else {
             return (
                 <div className='bookListing'>
+
+                    <button className='deleteButton' onClick={() => this.deleteItem(this.props.bookInfo._id)}>x</button>
                 
                     <img className='bookImage' src={this.props.bookInfo.imageUrl}></img> 
                     

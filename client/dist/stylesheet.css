@@ -63,3 +63,15 @@ form {
     margin-top: 100px;
     margin-bottom: 100px;
 }
+
+iframe {
+    margin-top: 50px;
+}
+
+.deleteButton {
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    border-color: red;
+    display: block;
+}

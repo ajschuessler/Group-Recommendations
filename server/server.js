@@ -8,6 +8,7 @@ const getAllBooks = require('../database/models.js').getAllBooks;
 const morgan = require('morgan');
 const addNewBookToList = require('../database/models.js').addNewBookToList;
 const updateVoteCount = require('../database/models.js').updateVoteCount;
+const deleteItemFromDb = require('../database/models.js').deleteItemFromDb;
 
 
 app.use(bodyParser.json());
@@ -25,8 +26,11 @@ app.post('/addBook', (req, res) => {
 });
 
 app.put('/updateVoteCount', (req, res) => {
-    console.log(req.body);
     updateVoteCount(req, res);
+})
+
+app.delete('/deleteItem/:id', (req, res) => {
+    deleteItemFromDb(req, res);
 })
 
 app.listen(port, () => {

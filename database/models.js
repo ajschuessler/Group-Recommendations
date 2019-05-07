@@ -36,6 +36,19 @@ let addNewBookToList = function(req, res) {
     });
 }
 
+let deleteItemFromDb = function(req, res) {
+    console.log(req.params.id);
+    Book.deleteOne({_id: req.params.id}, (err) => {
+        if (err) {
+            console.log(err);
+            res.send('error deleting');
+        } else {
+            console.log('item deleted');
+            res.send('deleted successfully');
+        }
+    })
+}
+
 let updateVoteCount = function(req, res) {
     let query = {'title': req.body.title};
     Book.findOneAndUpdate(query, {upvotes: req.body.newUpvotes}, {upsert: true}, (err, doc) => {
@@ -52,5 +65,6 @@ let updateVoteCount = function(req, res) {
 module.exports = {
     getAllBooks: getAllBooks,
     addNewBookToList: addNewBookToList,
-    updateVoteCount: updateVoteCount
+    updateVoteCount: updateVoteCount,
+    deleteItemFromDb: deleteItemFromDb
 }
