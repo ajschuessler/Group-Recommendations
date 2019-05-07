@@ -21,7 +21,8 @@ class Recommendations extends React.Component {
     }
 
     getAllBooks() {
-        Axios.get('http://localhost:3000/books')
+        // Axios.get('http://localhost:3000/books')
+        Axios.get('/books')
         .then(results => {
             this.setState({
                 allBooks: results.data
