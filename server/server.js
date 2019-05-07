@@ -3,7 +3,8 @@ var bodyParser = require('body-parser');
 var app = express();
 const cors = require('cors');
 const path = require('path');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
+// const port = process.env.PORT || 3000;
 const getAllBooks = require('../database/models.js').getAllBooks;
 const morgan = require('morgan');
 const addNewBookToList = require('../database/models.js').addNewBookToList;
@@ -33,6 +34,6 @@ app.delete('/deleteItem/:id', (req, res) => {
     deleteItemFromDb(req, res);
 })
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(port, () => {
     console.log(`server running at: http://localhost:${port}`);
 });
