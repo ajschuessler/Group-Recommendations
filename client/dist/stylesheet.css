@@ -70,8 +70,8 @@ iframe {
 
 .deleteButton {
     border-radius: 50%;
-    background-color: red;
+    background-color: lightgrey;
     color: white;
-    border-color: red;
+    border-color: lightgrey;
     display: block;
 }

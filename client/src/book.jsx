@@ -95,7 +95,7 @@ class Book extends React.Component {
             return (
                 <div className='bookListing'>
 
-                    <button className='deleteButton' onClick={() => this.deleteItem(this.props.bookInfo._id)}>x</button>
+                    <button className='deleteButton' onClick={() => this.deleteItem(this.props.bookInfo._id)}>X</button>
                 
                     <img className='bookImage' src={this.props.bookInfo.imageUrl}></img> 
                     
