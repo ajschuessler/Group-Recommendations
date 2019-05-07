@@ -4,7 +4,7 @@ const bookSchema = require('./index.js').bookSchema;
 
 
 let getAllBooks = function(req, res) {
-    Book.find({}).sort({upvotes: -1}).exec(function (err, books) {
+    Book.find({}).sort({rating: -1}).exec(function (err, books) {
         if (err) {
             return console.error(err);
         } else {
@@ -20,7 +20,9 @@ let addNewBookToList = function(req, res) {
         upvotes: 0,
         purchaseUrl: req.body.purchaseUrl,
         imageUrl: req.body.imageUrl,
-        contentType: req.body.contentType
+        contentType: req.body.contentType,
+        rating: req.body.rating,
+        youtubeEmbedTag: req.body.youtubeEmbedTag
     });
 
     newBook.save(err => {

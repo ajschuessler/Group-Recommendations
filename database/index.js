@@ -14,7 +14,9 @@ var bookSchema = new mongoose.Schema({
     upvotes: Number,
     purchaseUrl: String,
     imageUrl: String,
-    contentType: String
+    contentType: String,
+    rating: Number,
+    youtubeEmbedTag: String
   });
 
 var Book = mongoose.model('Book', bookSchema);

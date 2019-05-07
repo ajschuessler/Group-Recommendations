@@ -1,5 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
+import StarRatings from 'react-star-ratings';
 
 
 class Book extends React.Component {
@@ -7,6 +8,7 @@ class Book extends React.Component {
         super(props);
 
         this.updateVoteCount = this.updateVoteCount.bind(this);
+        this.convertEmbedTagToEmbedUrl = this.convertEmbedTagToEmbedUrl.bind(this);
     }
 
     updateVoteCount(e) {
@@ -28,25 +30,65 @@ class Book extends React.Component {
         })
     }
 
+    convertEmbedTagToEmbedUrl(url) {
+
+        let startIndex;
+        let endIndex;
+        let countQuotes;
+        let numberQuotes = 0;
+    
+        for (var i = 0; i < url.length; i++) {
+            if (url[i] + url[i+1] + url[i+2] === 'src') {
+                countQuotes = 'yes';
+            }
+            if (countQuotes === 'yes' && url[i] === '"') {
+                numberQuotes += 1;
+                if (startIndex === undefined) {
+                    startIndex = i + 1;
+                }
+            }
+            if (numberQuotes === 2) {
+                endIndex = i;
+                break;
+            }
+        }
+    
+        return url.slice(startIndex, endIndex);
+    }
+
     render() {
 
-        return (
-            <div className='bookListing'>
-            
-                <img className='bookImage' src={this.props.bookInfo.imageUrl}></img> 
+        if (this.props.bookInfo.contentType === 'youtubeSelect' && this.props.bookInfo.youtubeEmbedTag !== undefined) {
+            return (
+                <iframe width="859" height="483" src={this.convertEmbedTagToEmbedUrl(this.props.bookInfo.youtubeEmbedTag)} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            )
+
+        } else {
+            return (
+                <div className='bookListing'>
                 
-                <div>{this.props.bookInfo.title}</div> 
+                    <img className='bookImage' src={this.props.bookInfo.imageUrl}></img> 
+                    
+                    <div>{this.props.bookInfo.title}</div> 
+                    
+                    <div className='author'>{this.props.bookInfo.author}</div>
+                    
+                    <a href={this.props.bookInfo.purchaseUrl}>Click Here To View</a>
+
+                    <div>
+                        <StarRatings
+                            rating={this.props.bookInfo.rating}
+                            starRatedColor="gold"
+                            changeRating={this.changeRating}
+                            numberOfStars={10}
+                            name='rating'
+                            starDimension="20px"
+                        />
+                    </div>
                 
-                <div className='author'>by {this.props.bookInfo.author}</div>
-                
-                <a href={this.props.bookInfo.purchaseUrl}>Buy On Amazon</a>
-                
-                <div>
-                    <button id={this.props.bookInfo.title} className='upvoteButton' onClick={(e) => this.updateVoteCount(e)}>👍{this.props.bookInfo.upvotes}</button>
                 </div>
-            
-            </div>
-        )
+            )
+        }
     }
 }
 

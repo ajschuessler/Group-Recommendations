@@ -42,6 +42,8 @@ class Recommendations extends React.Component {
             purchaseUrl: document.getElementById('purchaseUrl').value,
             imageUrl: document.getElementById('imageUrl').value,
             contentType: document.getElementById('contentType').value,
+            rating: Number(document.getElementById('rating').value),
+            youtubeEmbedTag: document.getElementById('youtubeEmbedTag').value
         })
         .then(response => {
             console.log(response);
@@ -62,14 +64,20 @@ class Recommendations extends React.Component {
             return (
                 <div>
 
-                    <h1>My Recommendations</h1>
+                    <h1>Content Blog</h1>
+
+                    <h2>Filter By:</h2>
                     
                     <div id='bookSelectContainer'>
-                        <img onClick={(e) => this.handleContentChange(e)} id='bookSelect' src={`https://image.flaticon.com/icons/png/512/130/130304.png`}></img>
+                        <img onClick={(e) => this.handleContentChange(e)} id='bookSelect' src={`https://freeiconshop.com/wp-content/uploads/edd/book-open-outline-filled.png`}></img>
                     </div>
 
                     <div id='movieSelectContainer'>
-                        <img onClick={(e) => this.handleContentChange(e)} id='movieSelect' src={`http://cdn.onlinewebfonts.com/svg/img_572192.png`}></img>
+                        <img onClick={(e) => this.handleContentChange(e)} id='movieSelect' src={`https://www.freeiconspng.com/uploads/movie-icon-11.png`}></img>
+                    </div>
+
+                    <div id='youtubeSelectContainer'>
+                        <img onClick={(e) => this.handleContentChange(e)} id='youtubeSelect' src={`http://logok.org/wp-content/uploads/2014/08/Youtube-logo-2017-640x480.png`}></img>
                     </div>
 
                     <form onSubmit={this.handleSubmit}>
@@ -80,18 +88,23 @@ class Recommendations extends React.Component {
                         </div>
                         
                         <div>
-                            <label>Author</label>
+                            <label>Author/Director</label>
                             <input type="text" id="author" />
                         </div>
                         
                         <div>
-                            <label>ImageUrl</label>
+                            <label>Image Url</label>
                             <input type="text" id="imageUrl" />
                         </div>
 
                         <div>
-                            <label>purchaseUrl</label>
+                            <label>View/Purchase Url</label>
                             <input type="text" id="purchaseUrl" />
+                        </div>
+
+                        <div>
+                            <label>YouTube Embed Tag</label>
+                            <input type="text" id="youtubeEmbedTag" />
                         </div>
 
                         
@@ -101,7 +114,18 @@ class Recommendations extends React.Component {
                             <select id='contentType'>
                                 <option value="bookSelect">Book</option>
                                 <option value="movieSelect">Movie</option>
-                                <option value="tvShowSelect">TV Show</option>
+                                <option value="youtubeSelect">YouTube Clip</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label>Rating (# Stars)</label>
+                            <select id='rating'>
+                                {[1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10].map(value => {
+                                    return (
+                                        <option value={value}>{value}</option>
+                                    )
+                                })}
                             </select>
                         </div>
 
