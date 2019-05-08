@@ -2,7 +2,7 @@
 
 Group Recommendations is a content management service where you can keep track of books, movies and YouTube clips that you love.
 
-![](https://gfycat.com/LargePlayfulCougar)
+![](https://media.giphy.com/media/RLVa70G4ew0gjryzZu/giphy.gif)
 
 # Major Technologies Used: #
 
