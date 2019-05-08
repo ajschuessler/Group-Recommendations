@@ -25,4 +25,6 @@ Clone down Group-Recommendations to your local machine.
 
 Navigate browser to http://localhost:3000
 
+Note: You must have MongoDB installed on your local machine in order to run Group-Recommendations locally. If you need to install MongoDB, please refer to the MongoDB documentation at https://docs.mongodb.com/manual/installation/.
+
 
