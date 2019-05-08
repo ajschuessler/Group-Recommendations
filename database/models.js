@@ -37,7 +37,6 @@ let addNewBookToList = function(req, res) {
 }
 
 let deleteItemFromDb = function(req, res) {
-    console.log(req.params.id);
     Book.deleteOne({_id: req.params.id}, (err) => {
         if (err) {
             console.log(err);
