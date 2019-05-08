@@ -16,7 +16,7 @@ MongoDB, Mongoose
 
 Clone down Group-Recommendations to your local machine.
 
-### Within the root directory of the 'Neighborhood-Proxy' repo, run the following commands: ###
+### Within the root directory of the 'Group-Recommendations' repo, run the following commands: ###
     npm install
     npm run build
     npm run start
