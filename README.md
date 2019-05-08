@@ -2,6 +2,8 @@
 
 Group Recommendations is a content management service where you can keep track of books, movies and YouTube clips that you love.
 
+![](https://gfycat.com/LargePlayfulCougar)
+
 # Major Technologies Used: #
 
 ### Client ###
