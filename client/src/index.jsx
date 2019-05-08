@@ -12,7 +12,7 @@ class Recommendations extends React.Component {
             currentContentType: 'bookSelect',
         }
 
-        this.getAllBooks = this.getAllBooks.bind(this);
+        this.getAllBooks = this.getAllBooks.(this);
         this.handleContentChange = this.handleContentChange.bind(this);
     }
 

@@ -7,7 +7,6 @@ class Book extends React.Component {
     constructor(props) {
         super(props);
 
-        this.updateVoteCount = this.updateVoteCount.bind(this);
         this.convertEmbedTagToEmbedUrl = this.convertEmbedTagToEmbedUrl.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
     }
