@@ -12,25 +12,6 @@ class Book extends React.Component {
         this.deleteItem = this.deleteItem.bind(this);
     }
 
-    updateVoteCount(e) {
-        
-        let newCount = {
-            title: e.target.id,
-            newUpvotes: this.props.bookInfo.upvotes + 1
-        }
-
-        
-
-        Axios.put('/updateVoteCount', newCount)
-        .then(res => {
-            console.log(res);
-        })
-        .then(() => this.props.getAllBooks())
-        .catch(err => {
-            console.log(err);
-        })
-    }
-
     convertEmbedTagToEmbedUrl(url) {
 
         let startIndex;
@@ -58,7 +39,6 @@ class Book extends React.Component {
     }
 
     deleteItem(id) {
-        console.log(id);
         Axios.delete(`/deleteItem/${id}`, {data: id})
         .then(res => {
             console.log(res);
@@ -74,9 +54,11 @@ class Book extends React.Component {
         if (this.props.bookInfo.contentType === 'youtubeSelect' && this.props.bookInfo.youtubeEmbedTag !== undefined) {
             return (
                 <div>
-                    <button className='deleteButton' onClick={() => this.deleteItem(this.props.bookInfo._id)}>x</button>
+                    
+                    <button className='deleteButton' onClick={() => this.deleteItem(this.props.bookInfo._id)}>X</button>
 
                     <iframe width="859" height="483" src={this.convertEmbedTagToEmbedUrl(this.props.bookInfo.youtubeEmbedTag)} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    
                     <div>
                         <StarRatings
                             rating={this.props.bookInfo.rating}
@@ -87,6 +69,7 @@ class Book extends React.Component {
                             starDimension="20px"
                         />
                     </div>
+
                 </div>
                 
             )
